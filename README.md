@@ -51,7 +51,9 @@ Jenkins CI/CD Pipeline
 
 - Amazon Web Services (AWS)
 - EC2
-
+- AWS ALB
+- Auto Scaling Group
+- EC2 Docker Containers
 ---
 
 # CI/CD Pipeline Workflow
@@ -174,7 +176,6 @@ Future Enhancements
 Prometheus and Grafana monitoring
 Kubernetes deployment
 Infrastructure automation using Terraform
-
 
 Author
 
