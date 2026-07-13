@@ -45,6 +45,7 @@ Jenkins CI/CD Pipeline
 - SonarQube
 - Docker
 - Docker Hub
+- GitHub Webhook
 
 ## Cloud Platform
 
@@ -81,13 +82,13 @@ Checks:
 
 Maven compiles and packages the Spring Boot application.
 
-Command:
+Command:mvn clean package
 
 ### Testing Stage
 
 Runs automated tests.
 
-Command:
+Command:mvn test
 ---
 
 # SonarQube Code Analysis
@@ -110,7 +111,8 @@ The application is packaged as a Docker image.
 
 ## Docker Build
 
-
+docker build -t employee-api .
+docker run -d -p 8080:8080 employee-api
 
 
 ├── Docker Image Build
