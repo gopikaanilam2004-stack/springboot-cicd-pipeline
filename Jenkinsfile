@@ -7,9 +7,7 @@ pipeline {
     }
 
     options {
-        buildDiscarder(logRotator(
-            numToKeepStr: '5'
-        ))
+        buildDiscarder(logRotator(numToKeepStr: '5'))
         timestamps()
     }
 
@@ -18,11 +16,11 @@ pipeline {
         stage('Verify Environment') {
             steps {
                 sh '''
-                echo "Checking Java version"
-                java -version
+                    echo "Java Version:"
+                    java -version
 
-                echo "Checking Maven version"
-                mvn -version
+                    echo "Maven Version:"
+                    mvn -version
                 '''
             }
         }
@@ -43,25 +41,23 @@ pipeline {
 
         stage('Archive Artifact') {
             steps {
-                echo 'Archiving JAR file...'
                 archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
             }
         }
-
     }
 
     post {
 
         success {
-            echo '✅ Build completed successfully!'
+            echo 'BUILD SUCCESS'
         }
 
         failure {
-            echo '❌ Build failed. Check console output.'
+            echo 'BUILD FAILED'
         }
 
         always {
-            echo 'Pipeline execution completed.'
+            echo 'Pipeline completed'
         }
     }
-}}
+}
